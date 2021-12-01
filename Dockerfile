@@ -3,6 +3,7 @@ FROM python:3.8-slim-buster
 COPY config.json /config.json
 
 RUN apt-get update && apt-get upgrade -y
+RUN apt-get install curl
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN bash -c "source $HOME/.poetry/env"
