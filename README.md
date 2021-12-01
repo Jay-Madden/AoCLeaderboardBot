@@ -4,7 +4,7 @@ Dead simple self hostable AoC leaderboard bot
 
 Setup: 
   1. Clone the repo
-  2. Rename jonfig.json.template -> config.json and fill in the variables
+  2. Rename config.json.template -> config.json and fill in the variables
   
     Token: Your bots token
     LeaderboardTitle: The title you want the leaderboard embed to have
