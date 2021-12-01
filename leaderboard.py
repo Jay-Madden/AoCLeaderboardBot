@@ -36,7 +36,7 @@ class LeaderboardCog(commands.Cog):
         for i, g in enumerate(members):
             bar.append(
                 f'{i + 1}: Anonymous#{g["id"]} ({g["local_score"]})' if g["name"] is None else f'{i + 1}: {g["name"]} ({g["local_score"]})')
-        bar = bar[:20]
+        bar = bar[:35]
         leaders = '\n'.join(bar)
 
         embed = discord.Embed(title='**Clemson CPSC Advent Of Code Leaderboard!**', color=discord.Colour.green())
