@@ -5,7 +5,7 @@ COPY config.json /config.json
 RUN apt-get update && apt-get install -y curl
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
-RUN bash -c "source $HOME/.poetry/env"
+ENV PATH /root/.local/bin:$PATH
 
 RUN poetry install
 
