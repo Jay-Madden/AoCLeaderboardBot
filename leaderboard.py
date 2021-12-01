@@ -14,7 +14,7 @@ class LeaderboardCog(commands.Cog):
         self.bot = bot
         self.update_leaderboard.start()
 
-    @tasks.loop(seconds=15.0)
+    @tasks.loop(minutes=15)
     async def update_leaderboard(self):
         channel: discord.TextChannel = self.bot.get_channel(self.bot.config['LeaderboardChannel'])
 
