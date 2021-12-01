@@ -13,4 +13,4 @@ ENV PATH /root/.local/bin:$PATH
 RUN poetry install
 
 # if "python main.py" is how you want to run your server
-ENTRYPOINT ["poetry", "run", "main.py"]
+ENTRYPOINT ["python", "main.py"]
