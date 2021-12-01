@@ -97,11 +97,12 @@ python-versions = ">=3.6"
 [package.dependencies]
 idna = ">=2.0"
 multidict = ">=4.0"
+typing-extensions = {version = ">=3.7.4", markers = "python_version < \"3.8\""}
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.10"
-content-hash = "5ccb97113a457dafa1834a2c71b5e2c008afcc48ab2746dde11fddbf2603d162"
+python-versions = "^3.7"
+content-hash = "0f411cfb0585f5e5fff06ac0905e35f37b69605f4dd288ace1233f43a1b71d47"
 
 [metadata.files]
 aiohttp = [
