@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands, tasks
 import logging
 
-log = logging.getLogger('bott')
+log = logging.getLogger('bot')
 
 ICON_URL = 'https://camo.githubusercontent.com/5dd06562878c98a85ffc0703941a73947b2c2cfafa7f1f3875e7de7aa39c01bb/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f45467332316d30585941496a7134543f666f726d61743d6a7067266e616d653d6c61726765'
 
@@ -27,6 +27,8 @@ class LeaderboardCog(commands.Cog):
             return
 
         lb_embed = await self.get_leaderboard_embed()
+
+        log.info('Sending leaderboard embed')
         await leaderboard_message.edit(embed=lb_embed)
 
     @update_leaderboard.before_loop
@@ -34,7 +36,10 @@ class LeaderboardCog(commands.Cog):
         await self.bot.wait_until_ready()
 
     async def get_leaderboard_embed(self):
+        log.info('Updating Leaderboard')
         lb = await self.get_aoc_leaderboard()
+
+        log.info(f'Got a response with content: {json.dumps(lb)}')
         members = [v for k, v in lb['members'].items()]
         members.sort(key=lambda x: x['local_score'], reverse=True)
 
