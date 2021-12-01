@@ -22,7 +22,7 @@ class LeaderboardCog(commands.Cog):
 
         try:
             leaderboard_message = await channel.fetch_message(channel.last_message_id)
-        except:
+        except Exception as e:
             await channel.send(embed=await self.get_leaderboard_embed())
             return
 
@@ -46,11 +46,12 @@ class LeaderboardCog(commands.Cog):
         bar = []
         for i, g in enumerate(members):
             bar.append(
-                f'{i + 1}: Anonymous#{g["id"]} ({g["local_score"]})' if g["name"] is None else f'{i + 1}: {g["name"]} ({g["local_score"]})')
+                f'{i + 1}: Anonymous#{g["id"]} ({g["local_score"]})' if g["name"] is None else f'{i + 1: >2}: {g["name"]} ({g["local_score"]})')
         bar = bar[:20]
         leaders = '\n'.join(bar)
 
         embed = discord.Embed(title=f'**{self.bot.config["LeaderboardTitle"]} Advent Of Code Leaderboard!**', color=discord.Colour.green())
+        embed.add_field(name=f'Invite Id', value=f'`{self.bot.config["LeaderboardInvite"]}`', inline=False)
         embed.add_field(name='Top 20', value=f'```{leaders}```')
         embed.set_image(url=ICON_URL)
         embed.set_footer(text='This leaderboard will update every 15 minutes')
