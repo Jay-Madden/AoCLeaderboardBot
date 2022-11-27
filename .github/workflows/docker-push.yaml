@@ -15,7 +15,6 @@ permissions:
 env:
   REGISTRY: ghcr.io
 
-
 jobs:
   build-push:
     runs-on: ubuntu-latest
