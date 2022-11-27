@@ -19,7 +19,7 @@ log.info(f"PROD Flag = {prod_flag}")
 if bool(prod_flag):
     config["Token"] = os.getenv("TOKEN")
     config["LeaderboardTitle"] = os.getenv("LEADERBOARDTITLE")
-    config["LeaderboardChannel"] = os.getenv("LEADERBOARDCHANNEL")
+    config["LeaderboardChannel"] = int(os.getenv("LEADERBOARDCHANNEL"))
     config["LeaderboardInvite"] = os.getenv("LEADERBOARDINVITE")
     config["SessionCookie"] = os.getenv("SESSIONCOOKIE")
     config["LeaderboardEndpoint"] = os.getenv("LEADERBOARDENDPOINT")
