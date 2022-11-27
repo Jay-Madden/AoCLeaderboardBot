@@ -9,21 +9,21 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("bot")
 log.setLevel(logging.DEBUG)
 
-with open("config.json") as f:
-    log.info("Loading Config Values")
+log.info("Loading Config Values")
 
-    config = {}
-    if bool(os.getenv("PROD")):
-        config["Token"] = os.getenv("Token")
-        config["LeaderboardTitle"] = os.getenv("LeaderboardTitle")
-        config["LeaderboardChannel"] = os.getenv("LeaderboardChannel")
-        config["LeaderboardInvite"] = os.getenv("LeaderboardInvite")
-        config["SessionCookie"] = os.getenv("SessionCookie")
-        config["LeaderboardEndpoint"] = os.getenv("LeaderboardEndpoint")
-    else:
+config = {}
+if bool(os.getenv("PROD")):
+    config["Token"] = os.getenv("TOKEN")
+    config["LeaderboardTitle"] = os.getenv("LEADERBOARDTITLE")
+    config["LeaderboardChannel"] = os.getenv("LEADERBOARDCHANNEL")
+    config["LeaderboardInvite"] = os.getenv("LEADERBOARDINVITE")
+    config["SessionCookie"] = os.getenv("SESSIONCOOKIE")
+    config["LeaderboardEndpoint"] = os.getenv("LEADERBOARDENDPOINT")
+else:
+    with open("config.json") as f:
         config = json.loads(f.read())
 
-    log.info("Config Values Loaded")
+log.info("Config Values Loaded")
 
 
 class AoCLeaderboardBot(commands.Bot):
