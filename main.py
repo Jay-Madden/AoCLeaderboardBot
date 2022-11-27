@@ -12,7 +12,11 @@ log.setLevel(logging.DEBUG)
 log.info("Loading Config Values")
 
 config = {}
-if bool(os.getenv("PROD")):
+
+prod_flag = os.getenv("PROD")
+log.info(f"PROD Flag = {prod_flag}")
+
+if bool(prod_flag):
     config["Token"] = os.getenv("TOKEN")
     config["LeaderboardTitle"] = os.getenv("LEADERBOARDTITLE")
     config["LeaderboardChannel"] = os.getenv("LEADERBOARDCHANNEL")
