@@ -1,6 +1,4 @@
-FROM python:3.8-slim-buster
-
-COPY config.json /config.json
+FROM python:3.10-slim-buster
 
 WORKDIR /Bot
 ADD . /Bot
