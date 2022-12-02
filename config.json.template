@@ -1,7 +1,7 @@
 {
   "Token": "",
   "LeaderboardTitle": "",
-  "LeaderboardChannel": "",
+  "LeaderboardChannel": 0,
   "SessionCookie": "",
   "LeaderboardEndpoint": "",
   "LeaderboardInvite": ""
