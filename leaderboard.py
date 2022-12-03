@@ -87,7 +87,7 @@ class LeaderboardCog(commands.Cog):
 
         embed = discord.Embed(
             title=f'**{self.bot.config["LeaderboardTitle"]} Advent Of Code Leaderboard!**',
-            description="Source Code: [Link](https://github.com/Jay-Madden/AdventOfCode)",
+            description="Source Code: [Link](https://github.com/Jay-Madden/AoCLeaderboardBot)",
             color=discord.Colour.green(),
         )
         embed.add_field(
