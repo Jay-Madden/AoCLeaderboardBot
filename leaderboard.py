@@ -87,6 +87,7 @@ class LeaderboardCog(commands.Cog):
 
         embed = discord.Embed(
             title=f'**{self.bot.config["LeaderboardTitle"]} Advent Of Code Leaderboard!**',
+            description="Source Code: [Link](https://github.com/Jay-Madden/AdventOfCode)",
             color=discord.Colour.green(),
         )
         embed.add_field(
@@ -97,7 +98,7 @@ class LeaderboardCog(commands.Cog):
         embed.add_field(name="Top 20", value=f"```{leaders}```", inline=False)
         embed.add_field(name="Last Updated", value=get_timestamp())
         embed.set_image(url=ICON_URL)
-        embed.set_footer(text=f"This leaderboard will update every 15 minutes")
+        embed.set_footer(text="This leaderboard will update every 15 minutes")
         return embed
 
     async def get_aoc_leaderboard(self):
