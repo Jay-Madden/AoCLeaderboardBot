@@ -7,13 +7,15 @@ import discord
 from discord.ext import commands, tasks
 import logging
 
+from main import AoCLeaderboardBot
+
 log = logging.getLogger("bot")
 
 ICON_URL = "https://camo.githubusercontent.com/5dd06562878c98a85ffc0703941a73947b2c2cfafa7f1f3875e7de7aa39c01bb/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f45467332316d30585941496a7134543f666f726d61743d6a7067266e616d653d6c61726765"
 
 
 class LeaderboardCog(commands.Cog):
-    def __init__(self, bot: commands.Bot):
+    def __init__(self, bot: AoCLeaderboardBot):
         self.bot = bot
         self.update_leaderboard.start()
         self.leaderboard_endpoint = bot.config["LeaderboardEndpoint"]

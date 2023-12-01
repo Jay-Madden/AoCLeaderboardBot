@@ -5,10 +5,10 @@ description = ""
 authors = ["Jay Madden <jaymaddencox@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 "discord.py" = "^2.1.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 black = "^22.10.0"
 
 [build-system]

@@ -33,7 +33,7 @@ log.info("Config Values Loaded")
 class AoCLeaderboardBot(commands.Bot):
     def __init__(self, config, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.config = config
+        self.config: dict[str, str] = config
         log.info("Leaderboard Cog loaded")
 
     async def setup_hook(self):
