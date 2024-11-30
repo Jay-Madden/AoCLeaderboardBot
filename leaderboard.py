@@ -24,9 +24,19 @@ class LeaderboardCog(commands.Cog):
     async def update_leaderboard(self):
         log.info(self.update_leaderboard.next_iteration)
         log.info("Getting leaderboard channel")
-        channel: discord.TextChannel = self.bot.get_channel(
-            self.bot.config["LeaderboardChannel"]
+        
+        lb_channel_id = int(self.bot.config["LeaderboardChannel"]) 
+        channel = self.bot.get_channel(
+                lb_channel_id
         )
+
+        if channel is None:
+            log.error("Failed to get leaderboard channel")
+            return
+
+        if not isinstance(channel, discord.TextChannel):
+            log.error("Configured leaderboard channel is not a TextChannel")
+            return
 
         lb_embed = await self.get_leaderboard_embed()
 
@@ -67,7 +77,7 @@ class LeaderboardCog(commands.Cog):
             return None
 
         log.info(f"Got a response with content: {json.dumps(lb)}")
-        members = [v for k, v in lb["members"].items()]
+        members = [v for _, v in lb["members"].items()]
 
         # Remove everyone from the list that doesn't have a score yet
         members = list(filter(lambda x: x["local_score"] > 0, members))

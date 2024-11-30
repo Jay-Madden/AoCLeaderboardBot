@@ -11,7 +11,7 @@ log.setLevel(logging.DEBUG)
 
 log.info("Loading Config Values")
 
-config = {}
+config: dict[str, str | None] = {}
 
 prod_flag = os.getenv("PROD")
 log.info(f"PROD Flag = {prod_flag}")
@@ -19,7 +19,7 @@ log.info(f"PROD Flag = {prod_flag}")
 if bool(prod_flag):
     config["Token"] = os.getenv("TOKEN")
     config["LeaderboardTitle"] = os.getenv("LEADERBOARDTITLE")
-    config["LeaderboardChannel"] = int(os.getenv("LEADERBOARDCHANNEL"))
+    config["LeaderboardChannel"] = os.getenv("LEADERBOARDCHANNEL")
     config["LeaderboardInvite"] = os.getenv("LEADERBOARDINVITE")
     config["SessionCookie"] = os.getenv("SESSIONCOOKIE")
     config["LeaderboardEndpoint"] = os.getenv("LEADERBOARDENDPOINT")
@@ -52,6 +52,8 @@ async def main():
 
     async with bot:
         log.info("Bot starting up")
+        assert config["Token"] is not None
+
         await bot.start(config["Token"])
 
 
