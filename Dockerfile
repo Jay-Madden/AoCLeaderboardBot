@@ -1,14 +1,15 @@
-FROM python:3.12
+FROM ghcr.io/astral-sh/uv:python3.13-trixie-slim
 
-WORKDIR /Bot
-ADD . /Bot
+# Enable bytecode compilation
+ENV UV_COMPILE_BYTECODE=1
 
-RUN apt-get update && apt-get install -y curl
+WORKDIR /bot
 
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH /root/.local/bin:$PATH
+ADD pyproject.toml .
+ADD uv.lock .
 
-RUN poetry install
+RUN uv sync --locked --no-install-project --no-dev
 
-# if "python main.py" is how you want to run your server
-ENTRYPOINT ["poetry", "run","python", "main.py"]
+ADD *.py /bot
+
+ENTRYPOINT ["uv", "run", "python", "main.py"]

@@ -16,16 +16,19 @@ config: dict[str, str | None] = {}
 prod_flag = os.getenv("PROD")
 log.info(f"PROD Flag = {prod_flag}")
 
-if bool(prod_flag):
+config = {}
+
+try:
+    with open("config.json") as f:
+        config = json.loads(f.read())
+except FileNotFoundError:
+    log.info("No config file found, loading from environment variables")
     config["Token"] = os.getenv("TOKEN")
     config["LeaderboardTitle"] = os.getenv("LEADERBOARDTITLE")
     config["LeaderboardChannel"] = os.getenv("LEADERBOARDCHANNEL")
     config["LeaderboardInvite"] = os.getenv("LEADERBOARDINVITE")
     config["SessionCookie"] = os.getenv("SESSIONCOOKIE")
     config["LeaderboardEndpoint"] = os.getenv("LEADERBOARDENDPOINT")
-else:
-    with open("config.json") as f:
-        config = json.loads(f.read())
 
 log.info("Config Values Loaded")
 
@@ -46,9 +49,7 @@ class AoCLeaderboardBot(commands.Bot):
 
 async def main():
     log.info("Running Bot")
-    bot = AoCLeaderboardBot(
-        config, command_prefix=None, intents=discord.Intents.default()
-    )
+    bot = AoCLeaderboardBot(config, command_prefix=None, intents=discord.Intents.default())
 
     async with bot:
         log.info("Bot starting up")

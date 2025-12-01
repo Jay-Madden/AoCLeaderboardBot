@@ -24,11 +24,9 @@ class LeaderboardCog(commands.Cog):
     async def update_leaderboard(self):
         log.info(self.update_leaderboard.next_iteration)
         log.info("Getting leaderboard channel")
-        
-        lb_channel_id = int(self.bot.config["LeaderboardChannel"]) 
-        channel = self.bot.get_channel(
-                lb_channel_id
-        )
+
+        lb_channel_id = int(self.bot.config["LeaderboardChannel"])
+        channel = self.bot.get_channel(lb_channel_id)
 
         if channel is None:
             log.error("Failed to get leaderboard channel")
@@ -52,9 +50,7 @@ class LeaderboardCog(commands.Cog):
             return
 
         if leaderboard_message.author != self.bot.user:
-            log.info(
-                "Previous message found was not a leaderboard, generating and sending new one"
-            )
+            log.info("Previous message found was not a leaderboard, generating and sending new one")
             await channel.send(embed=lb_embed)
             return
 

@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.git/
+.github/
+.idea/
+.venv/
+*.egg-info/
+.pytest_cache/
+*.backup
+poetry.lock.backup
+pyproject.toml.backup
+README.md

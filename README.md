@@ -2,9 +2,10 @@
 
 Dead simple self hostable AoC leaderboard bot
 
-Setup for local development: 
+Setup for local development:
   1. Clone the repo
-  2. Rename config.json.template -> config.json and fill in the variables
+  2. Install uv: `https://docs.astral.sh/uv/getting-started/installation/`
+  3. Rename config.json.template -> config.json and fill in the variables
 ```
     Token: Your bots token
     LeaderboardTitle: The title you want the leaderboard embed to have
@@ -12,7 +13,11 @@ Setup for local development:
     SessionCookie: Your Advent of code session cookie to view the leaderboard
     LeaderboardEndpoint: The json endpoint for your leaderboard on the AoC website
 ```
- 3. Run the main.py file
+  4. Install dependencies: `uv sync`
+  5. Run the bot: `uv run python main.py`
+
+Development commands:
+  - Format code: `uv run black .`
  
 Setup for docker hosting: 
 
