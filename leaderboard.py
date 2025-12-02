@@ -11,7 +11,7 @@ from main import AoCLeaderboardBot
 
 log = logging.getLogger("bot")
 
-ICON_URL = "https://camo.githubusercontent.com/5dd06562878c98a85ffc0703941a73947b2c2cfafa7f1f3875e7de7aa39c01bb/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f45467332316d30585941496a7134543f666f726d61743d6a7067266e616d653d6c61726765"
+ICON_URL = "https://jaysthoughts.com/aoc.jpeg"
 
 
 class LeaderboardCog(commands.Cog):
@@ -105,7 +105,7 @@ class LeaderboardCog(commands.Cog):
         )
         embed.add_field(name="Top 20", value=f"```{leaders}```", inline=False)
         embed.add_field(name="Last Updated", value=get_timestamp())
-        embed.set_image(url=ICON_URL)
+        embed.set_thumbnail(url=ICON_URL)
         embed.set_footer(text="This leaderboard will update every 15 minutes")
         return embed
 
